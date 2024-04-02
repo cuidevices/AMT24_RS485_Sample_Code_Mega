@@ -126,8 +126,8 @@ void setup()
 void loop()
 {
   //create an array of encoder addresses so we can use them in a loop
-  //uint8_t addresses[2] = {RS485_ENC0, RS485_ENC1};
-  uint8_t addresses[1] = {RS485_ENC0};
+  uint8_t addresses[2] = {RS485_ENC0, RS485_ENC1};
+  //uint8_t addresses[1] = {RS485_ENC0};
 
   //send the zero command to the encoders if the button is pressed
   if(digitalRead(ZERO_BUTTON) == LOW)
@@ -159,7 +159,7 @@ void loop()
 
     //We need to give the encoder enough time to respond, but not too long. In a tightly controlled application we would want to use a timeout counter
     //to make sure we don't have any issues, but for this demonstration we will just have an arbitrary delay before checking to see if we have data to read.
-    delayMicroseconds(400);
+    delayMicroseconds(600);
     
     //Response from encoder should be exactly 2 bytes
     int bytes_received = Serial1.available();
